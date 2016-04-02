@@ -1,4 +1,4 @@
-# hip-hop-hacks-maps-pack
+# Hip Hop Hacks Maps Pack
 
 Our app allows users to search for a song and view a map of all of the locations mentioned in the song. It was created during the Monthly Music Hackathon // Hip Hop Hacks hip hop hackathon on April 2, 2016.
 
