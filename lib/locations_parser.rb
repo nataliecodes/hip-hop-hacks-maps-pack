@@ -67,12 +67,24 @@ module LocationsParser
   def num? word
     MaxentTagger.tagString( word ).split("/").last == "CD "
   end
+  def has_non_alpha tag 
+    valid_chars = [*?a..?z, *?A..?Z, *'0'..'9']
+    a = tag.word.chars
+    !(a == a & valid_chars)
+  end
+  def num_only_in_beginning result
+    a = result.dup
+    a.shift
+    a.none?(&:num?)
+  end
+  def disqualified result
+    (result.length == 1) && result.none?(&:location?) || 
+      result.all?(&:num?) ||
+      result.any? {|t| has_non_alpha(t) } ||
+      !num_only_in_beginning(result)
+  end
   def loc_str result
-    str = unless result.all?(&:num?)
-            result.map(&:word).join(" ") 
-          else
-            nil
-          end
+    str = result.map(&:word).join(" ") unless disqualified(result)
     result.clear
     str
   end
