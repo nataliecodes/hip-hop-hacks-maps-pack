@@ -10,7 +10,7 @@
 <% if @query_results %>
 	<ul id="query-results-list">
 		<% @query_results.each do |result|%>
-			<li class="query-result"><a href="<%=result.children[1].attributes['href'].value%>"><%= result.content.delete("\n")%></a></li>
+      <li class="query-result"><%=link_to result[:text], maps_path(:url => results[:url]), method: :post%></li>
 		<% end %>
 	</ul>
 <% end %>
