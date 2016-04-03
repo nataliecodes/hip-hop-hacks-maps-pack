@@ -11,3 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+.*.sw*
+.DS_Store
+/.DS_Store
+Gemfile.lock
