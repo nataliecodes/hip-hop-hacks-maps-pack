@@ -1,4 +1,4 @@
-<h2><%=@search_results%></h2>
+<h2>Hip Hop Mapper</h2>
 
 <div id="search-form-container">
 	<%= form_tag do %>
@@ -6,3 +6,11 @@
 		<input type="submit" value="Find Songs!">
 	<% end %>
 </div>
+
+<% if @query_results %>
+	<ul id="query-results-list">
+		<% @query_results.each do |result|%>
+			<li class="query-result"><a href="<%=result.children[1].attributes['href'].value%>"><%= result.content.delete("\n")%></a></li>
+		<% end %>
+	</ul>
+<% end %>
