@@ -9,5 +9,8 @@ module Songable
            :url, result.children[1].attributes['href'].value]
     end
   end
-
+  def get_lyrics_from_link(url)
+    doc = Nokogiri::HTML(open(url))
+    doc.css('p').map(&:content).join(" ")
+  end
 end
