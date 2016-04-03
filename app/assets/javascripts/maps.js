@@ -21,4 +21,11 @@ var initMap = function() {
     });
     map.fitBounds(bounds);
   }
-}
+};
+
+$(document).ready(function(){
+  $("#layout-container").on("click", ".query-result", function(event){
+    console.log(event);
+    event.preventDefault();
+  });
+});

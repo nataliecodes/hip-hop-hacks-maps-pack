@@ -16,7 +16,6 @@ class MapsController < ApplicationController
   def create ##change this and the link that posts to it in /app/views/songs/index.html.erb
     lyrics = get_lyrics_from_link(params[:url])
     @locations = get_locations_from_lyrics(lyrics)
-    render "maps/test"
     if request.xhr?
       response = HTTParty.get(GEOCODE_URI, {query: {address: params[:query], key: ENV["GOOGLE_MAPS_API_KEY"]}})
       marker_positions = get_array_of_positions_from_response response
