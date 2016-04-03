@@ -6,10 +6,20 @@ class MapsController < ApplicationController
 	end
 
   def geocode_search
-    response = HTTParty.get(GEOCODE_URI, {address: params[:query], key: ENV["GOOGLE_MAPS_API_KEY"]})
-    @marker_positions = response["results"].map do |result|
-      return result["geometry"]["location"]
+    if request.xhr?
+      response = HTTParty.get(GEOCODE_URI, {query: {address: params[:query], key: ENV["GOOGLE_MAPS_API_KEY"]}})
+      marker_positions = get_array_of_positions_from_response response
+      render json: {
+        marker_positions: marker_positions
+      }
     end
-    render json: {html: render_to_string("maps/_map", layout: false, locals: {api_key: API_KEY})}
+  end
+
+  private
+
+  def get_array_of_positions_from_response response
+    response["results"].map do |result|
+      result["geometry"]["location"]
+    end
   end
 end
