@@ -8,9 +8,9 @@ var initMap = function() {
     });
   }
 
-  if(markerPositions.length > 0) {
+  if(window.markerPositions.length > 0) {
     var bounds = new google.maps.LatLngBounds();
-    markerPositions.forEach(function(position) {
+    window.markerPositions.forEach(function(position) {
       var coords = new google.maps.LatLng(position.lat, position.lng)
       new google.maps.Marker({
         map: map,
@@ -25,7 +25,20 @@ var initMap = function() {
 
 $(document).ready(function(){
   $("#layout-container").on("click", ".query-result", function(event){
-    console.log(event);
     event.preventDefault();
+    var songUrl = $(event.target).attr("href");
+    $.ajax({
+      url: '/maps',
+      type: 'POST',
+      dataType: 'JSON',
+      data: {url: songUrl,
+            query: "New York"}
+    }).done(function(response){
+      console.log(response);
+      window.positionMarkers = response.marker_positions;
+      initMap();
+    }).fail(function(response){
+      console.log("FAIL", response)
+    });
   });
 });
