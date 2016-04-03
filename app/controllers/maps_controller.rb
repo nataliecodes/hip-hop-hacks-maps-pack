@@ -9,6 +9,7 @@ class MapsController < ApplicationController
   def create ##change this and the link that posts to it in /app/views/songs/index.html.erb
     lyrics = get_lyrics_from_link(params[:url])
     @locations = get_locations_from_lyrics(lyrics)
+    render "maps/test"
   end
   def geocode_search
     response = HTTParty.get(GEOCODE_URI, {address: params[:query], key: ENV["GOOGLE_MAPS_API_KEY"]})
