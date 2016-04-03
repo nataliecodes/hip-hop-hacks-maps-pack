@@ -8,7 +8,6 @@ class SongsController < ApplicationController
 	def create
 		query = params[:"song-query"]
 		@query_results = list_query_results(query)
-
 		render 'index'
 	end
 end
