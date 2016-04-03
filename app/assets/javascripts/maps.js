@@ -32,10 +32,10 @@ $(document).ready(function(){
       type: 'POST',
       dataType: 'JSON',
       data: {url: songUrl,
-            query: "New York"}
+            query: "Brooklyn, NY"}
     }).done(function(response){
       console.log(response);
-      window.positionMarkers = response.marker_positions;
+      window.markerPositions = response.marker_positions;
       initMap();
     }).fail(function(response){
       console.log("FAIL", response)
