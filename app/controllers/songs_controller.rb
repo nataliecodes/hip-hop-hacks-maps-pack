@@ -1,4 +1,4 @@
-class SearchesController < ApplicationController
+class SongsController < ApplicationController
 	include Songable
 
 	def index
@@ -7,7 +7,6 @@ class SearchesController < ApplicationController
 
 	def create
 		query = params[:"song-query"]
-		#song_list = genius_query_list(song_query) James scrape method
 		@query_results = list_query_results(query)
 
 		render 'index'
