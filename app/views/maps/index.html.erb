@@ -1,0 +1,18 @@
+<h2>Hip Hop Mapper</h2>
+
+<div id="search-form-container">
+  <%= form_tag(create_query_path) do %>
+    Choose your song: <input type="text" name="song-query">
+    <input type="submit" value="Find Songs!">
+  <% end %>
+</div>
+
+<% if @query_results %>
+  <ul id="query-results-list">
+    <% @query_results.each do |result|%>
+      <li class="query-result"><%=link_to result[:text], maps_path(:url => result[:url])%></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render partial: 'map', locals: {api_key: @api_key} %>
