@@ -55,7 +55,7 @@ module LocationsParser
     end
     locations << loc_str(result)
     locations.delete_if(&:nil?)
-    locations
+    locations.uniq
   end
   private
   def location? word
@@ -68,7 +68,11 @@ module LocationsParser
     MaxentTagger.tagString( word ).split("/").last == "CD "
   end
   def loc_str result
-    str =  result.map(&:word).join(" ") if result.any?(&:location?)
+    str = unless result.all?(&:num?)
+            result.map(&:word).join(" ") 
+          else
+            nil
+          end
     result.clear
     str
   end
