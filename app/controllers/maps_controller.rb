@@ -4,6 +4,7 @@ class MapsController < ApplicationController
   GEOCODE_URI = "https://maps.googleapis.com/maps/api/geocode/json"
 
   def index
+    @api_key = API_KEY
   end
 
   def create_query
