@@ -13,10 +13,9 @@ class MapsController < ApplicationController
     render 'index'
   end
 
-  def create ##change this and the link that posts to it in /app/views/songs/index.html.erb
+  def create
     lyrics = get_lyrics_from_link(params[:url])
-    @locations = get_locations_from_lyrics(lyrics)  
-    # @locations = "New York"
+    @locations = get_locations_from_lyrics(lyrics)
     if request.xhr?
 
       #### Below returns an array of geocoded locations in JSON notation I think. Currently returns array of JSON Objects.
