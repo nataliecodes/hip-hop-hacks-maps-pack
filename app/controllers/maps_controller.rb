@@ -15,7 +15,8 @@ class MapsController < ApplicationController
 
   def create
     lyrics = get_lyrics_from_link(params[:url])
-    @locations = get_locations_from_lyrics_NER(lyrics)
+    @new_locations = get_locations_from_lyrics_DB(lyrics)
+    # @locations = get_locations_from_lyrics_NER(lyrics)
     if request.xhr?
 
       #### Below returns an array of geocoded locations in JSON notation I think. Currently returns array of JSON Objects.
