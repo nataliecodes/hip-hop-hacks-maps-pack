@@ -8,8 +8,8 @@
 
 require 'csv'
 
-text = File.read('lib/assets/sample.csv')
+text = File.read('lib/assets/AdWords_Locations.csv')
 csv = CSV.parse(text, headers: true)
-csv.each do |row| 
+csv.each do |row|
 	Location.create(name: row[1], canonical_name: row[2], target_type: row[5])
 end
