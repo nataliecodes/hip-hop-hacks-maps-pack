@@ -8,11 +8,13 @@
 </div>
 
 <% if @query_results %>
-  <ul id="query-results-list">
-    <% @query_results.each do |result|%>
-      <li class="query-result"><%=link_to result[:text], maps_path(:url => result[:url])%></li>
-    <% end %>
-  </ul>
+  <div id="query-results-list">
+    <ul>
+      <% @query_results.each do |result|%>
+        <li class="query-result"><%=link_to result[:text], maps_path(:url => result[:url])%></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= render partial: 'map', locals: {api_key: @api_key} %>
