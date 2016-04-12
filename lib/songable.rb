@@ -10,6 +10,8 @@ module Songable
     end
   end
   def get_lyrics_from_link(url)
+    url = url.split("=",2).last
+    url = url.gsub!("%3A",":").gsub!("%2F","/")
     doc = Nokogiri::HTML(open(url))
     doc.css('p').map(&:content).join(" ")
   end
