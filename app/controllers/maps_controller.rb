@@ -15,7 +15,7 @@ class MapsController < ApplicationController
 
   def create
     lyrics = get_lyrics_from_link(params[:url])
-    @locations = get_locations_from_lyrics(lyrics)
+    @locations = get_locations_from_lyrics(lyrics)  
     if request.xhr?
 
       #### Below returns an array of geocoded locations in JSON notation I think. Currently returns array of JSON Objects.
@@ -32,8 +32,13 @@ class MapsController < ApplicationController
   private
 
   def get_array_of_positions_from_response response
-    response.first["results"].map do |result|  ###### NEED to get it to work with multiple locations, response.first is just a hack
-      result["geometry"]["location"]
+    positions = []
+    response.each do |location|
+      location["results"].map do |result|  ###### NEED to get it to work with multiple locations, response.first is just a hack
+        positions << result["geometry"]["location"]
+        p positions
+      end
     end
+    positions
   end
 end
