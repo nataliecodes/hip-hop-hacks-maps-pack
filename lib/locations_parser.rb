@@ -34,7 +34,10 @@ module LocationsParser
 
 # NOTE: this will only find location types from the locations API we're using (cities, counties, boroughs, )
   def get_specific_locations(array_of_song_words)
-
+    locations = array_of_song_words.select do |word|
+      Location.find_by(name: word)
+    end
+    locations.uniq
   end
 
   def get_locations_from_lyrics_NER string
