@@ -34,9 +34,9 @@ $(document).ready(function(){
       data: {url: songUrl,
             query: "Brooklyn, NY"}
     }).done(function(response){
-      console.log(response);
       window.markerPositions = response.marker_positions;
       initMap();
+      $("#query-results-list").empty();
     }).fail(function(response){
       console.log("FAIL", response)
     });
