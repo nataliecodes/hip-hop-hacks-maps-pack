@@ -37,7 +37,6 @@ class MapsController < ApplicationController
     response.each do |location|
       location["results"].map do |result|  ###### NEED to get it to work with multiple locations, response.first is just a hack
         positions << result["geometry"]["location"]
-        p positions
       end
     end
     positions
