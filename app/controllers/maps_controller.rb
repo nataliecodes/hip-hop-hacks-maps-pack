@@ -20,7 +20,7 @@ class MapsController < ApplicationController
     if request.xhr?
 
       #### Below returns an array of geocoded locations in JSON notation I think. Currently returns array of JSON Objects.
-      response = @locations.map do |location|
+      response = @new_locations.map do |location|
         HTTParty.get(GEOCODE_URI, {query: {address: location, key: ENV["GOOGLE_MAPS_API_KEY"]}})
       end
       marker_positions = get_array_of_positions_from_response response
