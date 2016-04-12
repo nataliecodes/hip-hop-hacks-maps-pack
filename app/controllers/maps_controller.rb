@@ -23,7 +23,6 @@ class MapsController < ApplicationController
       response = @locations.map do |location|
         HTTParty.get(GEOCODE_URI, {query: {address: location, key: ENV["GOOGLE_MAPS_API_KEY"]}})
       end
-      binding.pry
       marker_positions = get_array_of_positions_from_response response
       render json: {
         marker_positions: marker_positions
