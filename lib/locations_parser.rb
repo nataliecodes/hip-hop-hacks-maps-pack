@@ -27,6 +27,12 @@ module LocationsParser
   MaxentTagger = Rjb::import('edu.stanford.nlp.tagger.maxent.MaxentTagger')
   MaxentTagger.init("lib/left3words-wsj-0-18.tagger")
 
+  def get_locations_from_lyrics_DB(string)
+    words = string.gsub(/[^a-z0-9\s]/i, '').split(' ')
+    binding.pry
+    puts words
+  end
+
   def get_locations_from_lyrics_NER string
     tags = string.split(" ").map do |word|
       Tag.new(:word=> word, :noun => noun?(word), :num=> num?(word), :location => location?(word))
