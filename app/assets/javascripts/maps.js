@@ -23,6 +23,12 @@ var initMap = function() {
   }
 };
 
+var insertLyrics = function(response) {
+  response.lyrics.forEach(function(element) {
+    $("#lyric-line").append("<li>"+element+"<li>");
+  });
+}
+
 $(document).ready(function(){
   $("#layout-container").on("click", ".query-result", function(event){
     event.preventDefault();
@@ -35,6 +41,7 @@ $(document).ready(function(){
             query: "Brooklyn, NY"}
     }).done(function(response){
       window.markerPositions = response.marker_positions;
+      insertLyrics(response);
       initMap();
       $("#query-results-list").empty();
     }).fail(function(response){
