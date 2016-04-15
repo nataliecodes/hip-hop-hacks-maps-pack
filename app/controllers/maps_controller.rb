@@ -15,6 +15,7 @@ class MapsController < ApplicationController
 
   def create
     lyrics = get_lyrics_from_link(params[:url])
+    lyrics_by_line = lyrics.split("\n")
     @new_locations = get_locations_from_lyrics_DB(lyrics)
     # @locations = get_locations_from_lyrics_NER(lyrics)
     if request.xhr?
@@ -24,7 +25,8 @@ class MapsController < ApplicationController
       end
       marker_positions = get_array_of_positions_from_response response
       render json: {
-        marker_positions: marker_positions
+        marker_positions: marker_positions,
+        lyrics: lyrics_by_line
       }
     end
   end
