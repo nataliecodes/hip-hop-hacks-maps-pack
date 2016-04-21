@@ -11,8 +11,8 @@ nav ul {
 	top: 100px;
 	right: 10px;
 	width:70%
-
 }
+
 #map {
   height: 400px;
   min-width: 200px;
@@ -31,4 +31,12 @@ nav ul {
 
 #query-results-list li {
 	font-size: .9em;
+}
+
+nav h2 {
+  font-size: 1em;
+}
+
+#no-bold-header {
+  font-weight: normal;
 }
