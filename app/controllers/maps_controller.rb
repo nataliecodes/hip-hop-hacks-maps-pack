@@ -14,7 +14,7 @@ class MapsController < ApplicationController
   end
 
   def create
-    lyrics = get_lyrics_from_link(params[:url])
+    lyrics = get_lyrics_from_link(params[:url]).squeeze("\n")
     lyrics_by_line = lyrics.split("\n")
     @new_locations = get_locations_from_lyrics_DB(lyrics)
     # @locations = get_locations_from_lyrics_NER(lyrics)

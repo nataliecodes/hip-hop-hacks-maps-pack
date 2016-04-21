@@ -25,7 +25,7 @@ var initMap = function() {
 
 var insertLyrics = function(response) {
   response.lyrics.forEach(function(element) {
-    $("#lyric-line").append("<li>"+element+"<li>");
+    $("#lyric-line").append("<li>"+element+"</li>");
   });
 }
 

@@ -1,24 +1,28 @@
 
-<div id="search-form-container">
-  <%= form_tag(create_query_path) do %>
-    Choose your song: <input type="text" name="song-query">
-    <input type="submit" value="Find Songs!">
-  <% end %>
-</div>
+<div id="sidebar">
+  <div id="search-form-container">
+    <%= form_tag(create_query_path) do %>
+      Choose your song: <input type="text" name="song-query">
+      <input type="submit" value="Find Songs!">
+    <% end %>
+  </div>
 
-<% if @query_results %>
-  <div id="query-results-list">
-    <ul>
-      <% @query_results.each do |result|%>
-        <li class="query-result"><%=link_to result[:text], maps_path(:url => result[:url])%></li>
-      <% end %>
+  <% if @query_results %>
+    <div id="query-results-list">
+      <ul>
+        <h3></h3>
+        <% @query_results.each do |result|%>
+          <li class="query-result"><%=link_to result[:text], maps_path(:url => result[:url])%></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="lyrics">
+    <ul id="lyric-line">
     </ul>
   </div>
-<% end %>
-
-<div id="lyrics">
-  <ul id="lyric-line">
-  </ul>
 </div>
-
-<%= render partial: 'map', locals: {api_key: @api_key} %>
+<div id="main-bar">
+  <%= render partial: 'map', locals: {api_key: @api_key} %>
+</div>

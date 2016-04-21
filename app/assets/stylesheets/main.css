@@ -2,7 +2,33 @@ html {
   font-family: sans-serif;
 }
 
+nav ul {
+	list-style-type: none;
+}
+
+#main-bar {
+	position: fixed;
+	top: 100px;
+	right: 10px;
+	width:70%
+
+}
 #map {
   height: 400px;
-  width: 800px;
+  min-width: 200px;
+}
+
+#sidebar {
+	float: left;
+	width: 25%;
+	min-width: 200px;
+}
+
+#lyric-line li {
+	list-style-type: none;
+	font-size: .8em;
+}
+
+#query-results-list li {
+	font-size: .9em;
 }
