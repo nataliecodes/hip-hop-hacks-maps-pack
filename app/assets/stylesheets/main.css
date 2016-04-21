@@ -6,3 +6,11 @@ html {
   height: 400px;
   width: 800px;
 }
+
+nav h2 {
+  font-size: 1em;
+}
+
+#no-bold-header {
+  font-weight: normal;
+}
