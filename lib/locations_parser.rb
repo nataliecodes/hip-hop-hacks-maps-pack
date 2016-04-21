@@ -28,7 +28,7 @@ module LocationsParser
   MaxentTagger.init("lib/left3words-wsj-0-18.tagger")
 
   def get_locations_from_lyrics_DB(string)
-    words = string.gsub(/[^a-z0-9\s]/i, '').split(' ')
+    words = string.gsub(/[^a-zA-Z0-9\s]/i, '').split(' ')
     get_specific_locations(words)
   end
 
